@@ -19,6 +19,7 @@ if user != 0:
     exit()
 
 #checking dependancies
+print "Checking for missing dependancies"
 if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
     print "rsync is installed, moving on"
 else:
