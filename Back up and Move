@@ -7,10 +7,8 @@ from subprocess import call
 
 # Variables
 user = os.getuid()
-login_user = raw_input("Enter the user you are logging in as")
-server = raw_input("Please enter the server you would like to back up to")
-port = raw_input("Please enter the port of the server")
 exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fstab", "/etc/mtab", "/etc/resolv.conf", "/etc/conf.d/net", "/etc/network/interfaces", "/etc/networks", "/etc/sysconfig/network*", "/etc/sysconfig/hwconf", "/etc/sysconfig/ip6tables-config", "/etc/sysconfig/kernel", "/etc/hostname", "/etc/HOSTNAME", "/etc/hosts", "/etc/modprobe*", "/etc/modules", "/net", "/lib/modules", "/etc/rc.conf" ]
+
 
 #check_root
 print "you are logged in as %s" % user
@@ -24,18 +22,22 @@ if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
     print "rsync is installed, moving on"
 else:
     print "We will need to install rsync to continue"
-    call (["yum install -y rsync"])
+    call(['yum',  'install', '-y', 'rsync'])
 
 #Create exceptionf file
 print "Creating exceptions file(s)"
-for item in exceptions:
-  exclusion.write("%s\n" % item)
+open("./exclusion", "a")
+with open("./exclusion", "a") as exclusion:
+    for item in exceptions:
+        exclusion.write("%s\n" % item)
+exclusion.close()
+exclusion = str("./exclusion")
 
 #Set up SSH destination
 print "Next we will set the destination, please enter the Server IP, user and port when promtped. Note that the user you are logging in as will need read/write access to the directory. Alternatively you can use root."
-print server
-print port
-print login_user
+login_user = str(raw_input("Enter the user you are logging in as: "))
+server = str(raw_input("Please enter the server you would like to back up to: "))
+port = str(raw_input("Please enter the port of the server: "))
 
 print "Performing transfer over ssh"
-call(["rsync -e", "'ssh'", "-azpx", "--delete-after", "--exclude-from="./exclusion"", / str(user)@str(server):str(port)/ ])
+call(['rsync', '-e', 'ssh', '-azpx', '--delete-after', '--exclude-from=', exclusion, user, '@', server, ':', port ], shell=True)
