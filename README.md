@@ -20,3 +20,8 @@ No installation required , just put it in a directory and run as sudo/root
 ### Issues / Bug Reporting
 
 All bugs can be submitted over at [The Github Issues page for this project](https://github.com/Deminarcis/move-my-server/issues)
+
+#### TODO
+- Add support for more than just systems using Yum starting with its successor DNF
+- Add OpenSUSE and Debian Support for all features
+- Rework Transport command
