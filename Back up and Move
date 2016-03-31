@@ -26,8 +26,8 @@ else:
 
 #Create exceptionf file
 print "Creating exceptions file(s)"
-open("./exclusion", "a")
-with open("./exclusion", "a") as exclusion:
+open("./exclusion", "w")
+with open("./exclusion", "w") as exclusion:
     for item in exceptions:
         exclusion.write("%s\n" % item)
 exclusion.close()
