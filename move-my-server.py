@@ -22,7 +22,8 @@ if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
     print "rsync is installed, moving on"
 else:
     print "We will need to install rsync to continue"
-    call(['yum',  'install', '-y', 'rsync'])
+    os.system('yum install -y rsync ')
+    #call(['yum',  'install', '-y', 'rsync'])
 
 #Create exceptionf file
 print "Creating exceptions file(s)"
@@ -40,4 +41,5 @@ server = str(raw_input("Please enter the server you would like to back up to: ")
 port = str(raw_input("Please enter the port of the server: "))
 
 print "Performing transfer over ssh"
-call(['rsync', '-e', 'ssh', '-azpx', '--delete-after', '--exclude-from=', exclusion, user, '@', server, ':', port ], shell=True)
+os.system('rsync -azpx --delete-after --exclude-from=%s %s@%s:%s' % (exclusion, login_user, server, port))
+#call(['rsync', '-e', 'ssh', '-azpx', '--delete-after', '--exclude-from=', exclusion, user, '@', server, ':', port ], shell=True)
