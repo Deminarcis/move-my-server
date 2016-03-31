@@ -38,8 +38,8 @@ exclusion = str("./exclusion")
 print "Next we will set the destination, please enter the Server IP, user and port when promtped. Note that the user you are logging in as will need read/write access to the directory. Alternatively you can use root."
 login_user = str(raw_input("Enter the user you are logging in as: "))
 server = str(raw_input("Please enter the server you would like to back up to: "))
-port = str(raw_input("Please enter the port of the server (default is 22): "))
+#port = str(raw_input("Please enter the port of the server (default is 22): "))
 destination_folder = str(raw_input("Enter the directory on the new server you will be copying to: "))
 
 print "Performing transfer over ssh"
-os.system('rsync -e ssh -azPxv --delete-after --exclude-from=%s / %s@%s:%s:%s' % (exclusion, login_user, server, port, destination_folder))
+os.system('rsync -e ssh -azPxv --delete-after --exclude-from=%s / %s@%s:%s' % (exclusion, login_user, server, destination_folder))
