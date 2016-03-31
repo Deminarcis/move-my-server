@@ -23,5 +23,6 @@ All bugs can be submitted over at [The Github Issues page for this project](http
 
 #### TODO
 - Add support for more than just systems using Yum starting with its successor DNF
-- Add OpenSUSE and Debian Support for all features
-- Rework Transport command
+- Add OpenSUSE and Debian (Potentially Ubuntu by extension) Support for all features
+- Add support for specifying port
+- Support preserving Systemd unit files (currently we assume you are using upstart)
