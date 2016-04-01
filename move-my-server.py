@@ -3,10 +3,11 @@
 # Imports .... I may have too many or some that arent going to be used
 import os
 import glob
-from subprocess import call
+import sys
+import platform
 
 # Variables
-os = call[(cat /etc/os-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/["]//g' | awk '{print $1}')]
+distro = str(platform.linux_distribution(distname))
 user = os.getuid()
 exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fstab", "/etc/mtab", "/etc/resolv.conf", "/etc/conf.d/net", "/etc/network/interfaces", "/etc/networks", "/etc/sysconfig/network*", "/etc/sysconfig/hwconf", "/etc/sysconfig/ip6tables-config", "/etc/sysconfig/kernel", "/etc/hostname", "/etc/HOSTNAME", "/etc/hosts", "/etc/modprobe*", "/etc/modules", "/net", "/lib/modules", "/etc/rc.conf" ]
 
@@ -23,8 +24,10 @@ if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
     print "rsync is installed, moving on"
 else:
     print "We will need to install rsync to continue"
-    os.system('yum install -y rsync ')
-
+    if distro == "CentOS" or "Red Hat":
+        os.system('yum install -y rsync ')
+    if distro == "Debian"
+        os.system('apt-get install rsync')
 
 #Create exceptionf file
 print "Creating exceptions file(s)"
@@ -39,7 +42,6 @@ exclusion = str("./exclusion")
 print "Next we will set the destination, please enter the Server IP, user and port when promtped. Note that the user you are logging in as will need read/write access to the directory. Alternatively you can use root."
 login_user = str(raw_input("Enter the user you are logging in as: "))
 server = str(raw_input("Please enter the server you would like to back up to: "))
-#port = str(raw_input("Please enter the port of the server (default is 22): "))
 destination_folder = str(raw_input("Enter the directory on the new server you will be copying to: "))
 
 print "Performing transfer over ssh"
