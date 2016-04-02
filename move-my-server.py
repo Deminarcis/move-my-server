@@ -6,7 +6,7 @@ import sys
 import platform
 
 # Static Variables
-distro = str(platform.linux_distribution()[0])
+distro = platform.linux_distribution()[0]
 user = os.getuid()
 exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fstab", "/etc/mtab", "/etc/resolv.conf", "/etc/conf.d/net", "/etc/network/interfaces", "/etc/networks", "/etc/sysconfig/network*", "/etc/sysconfig/hwconf", "/etc/sysconfig/ip6tables-config", "/etc/sysconfig/kernel", "/etc/hostname", "/etc/HOSTNAME", "/etc/hosts", "/etc/modprobe*", "/etc/modules", "/net", "/lib/modules", "/etc/rc.conf" ]
 
@@ -20,14 +20,15 @@ print ""
 print "we detect you are running %s" % distro
 #checking dependancies
 print "Checking for missing dependancies"
+print ""
 if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
     print "rsync is installed, moving on"
 else:
     print "We will need to install rsync to continue"
-    if distro == 'CentOS' or 'Red Hat':
-        os.system('yum install -y rsync ')
-    if distro == 'Debian':
-        os.system('apt-get install rsync')
+    if distro == "CentOS Linux":
+        os.system('yum install -y rsync')
+    if distro == "debian":
+        os.system('apt-get install -y rsync')
 
 #Create exceptionf file
 print "Creating exceptions file(s)"
