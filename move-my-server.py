@@ -1,12 +1,11 @@
 #!/usr/bin/python
 
-# Imports .... I may have too many or some that arent going to be used
+# Imports
 import os
-import glob
 import sys
 import platform
 
-# Variables
+# Static Variables
 distro = str(platform.linux_distribution(distname))
 user = os.getuid()
 exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fstab", "/etc/mtab", "/etc/resolv.conf", "/etc/conf.d/net", "/etc/network/interfaces", "/etc/networks", "/etc/sysconfig/network*", "/etc/sysconfig/hwconf", "/etc/sysconfig/ip6tables-config", "/etc/sysconfig/kernel", "/etc/hostname", "/etc/HOSTNAME", "/etc/hosts", "/etc/modprobe*", "/etc/modules", "/net", "/lib/modules", "/etc/rc.conf" ]
