@@ -22,4 +22,5 @@ All bugs can be submitted over at [The Github Issues page for this project](http
 
 #### TODO
 - Add OpenSUSE support for all features
+- Fedora support
 - Add support for specifying destination's port (we don't all use port 22 for SSH)

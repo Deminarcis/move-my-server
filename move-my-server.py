@@ -18,7 +18,7 @@ if user != 0:
     exit()
 print ""
 print "we detect you are running %s" % distro
-#checking dependancies
+#Checking dependancies
 print "Checking for missing dependancies"
 print ""
 if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
@@ -29,6 +29,10 @@ else:
         os.system('yum install -y rsync')
     if distro == "debian":
         os.system('apt-get install -y rsync')
+    if distro == "openSUSE":
+        os.system('zypper in rsync')
+    if distro == "Fedora":
+        os.system('dnf install rsync')
 
 #Create exceptionf file
 print "Creating exceptions file(s)"
