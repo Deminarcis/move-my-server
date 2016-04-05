@@ -1,20 +1,24 @@
 ### Move My Server
 
-Move My Server is a small script that is designed to allow users to easily move a server from one hypervisor to another. This script aims to handle everything but the destination by itself.
-
-Currently this script has been tested against and written for CentOS 7 and Debian 9.
-
+Move My Server is a small script that allows users to easily move a server from one hypervisor to another.
 I hope you find it useful!
 
 #### Requirements
 
-This script relies on
-- Python (2.7 or better should work just fine)
+You will only need Python to begin with but in the spirit of transparency this script will make sure the following are installed:
+
+- Python (2.7)
 - rsync
 
-#### Installation
+If you dont have these installed then the script will get them from your package manager.
 
-No installation required , just put it in a directory and run as sudo/root
+#### Supported / Tested on:
+
+- Debian 8 (Jessie)
+- CentOS 7 (1511 build)
+
+#### Installation
+unzip and run.
 
 ### Issues / Bug Reporting
 
