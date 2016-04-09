@@ -31,8 +31,6 @@ else:
         os.system('apt-get install -y rsync')
     if distro == "openSUSE":
         os.system('zypper in rsync')
-    if distro == "Fedora":
-        os.system('dnf install rsync')
 
 #Create exceptionf file
 print "Creating exceptions file(s)"
