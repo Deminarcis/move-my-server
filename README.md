@@ -1,12 +1,3 @@
-#### Next-Release branch
-
-Welcome the the next release branch.
-Please be aware that this branch is an "in progress" branch and should be treated as if it has not been tested at all and probably broken.
-There is the chance that it may work fine and even better than the latest stable release.
-
-Consider this a beta, and like all beta builds it will have its bugs.
-
-It is very possible for this to be completely broken
 
 ### Move My Server
 
@@ -19,21 +10,13 @@ I hope you find it useful!
 #### Requirements
 
 This script relies on
-- Python (2.7 or better should work just fine)
+- Python
 - rsync
 
 #### Installation
 
-No installation required , just put it in a directory and run as sudo/root
+unzip and run!
 
 ### Issues / Bug Reporting
 
 All bugs can be submitted over at [The Github Issues page for this project](https://github.com/Deminarcis/move-my-server/issues)
-
-#### GOALS FOR NEXT RELEASE
-- Add support for specifying destination's port
-- Allow the use of arguments/options to specify:
-    - Destination
-    - User
-    - Server
-    - Port
