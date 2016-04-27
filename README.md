@@ -1,3 +1,4 @@
+
 ### Move My Server
 
 Move My Server is a small script that allows users to easily move a server from one hypervisor to another.
@@ -24,8 +25,3 @@ unzip and run.
 ### Issues / Bug Reporting
 
 All bugs can be submitted over at [The Github Issues page for this project](https://github.com/Deminarcis/move-my-server/issues)
-
-#### TODO
-- Add OpenSUSE support for all features
-- Fedora support
-- Add support for specifying destination's port (we don't all use port 22 for SSH)
