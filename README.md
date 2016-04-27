@@ -6,6 +6,8 @@ There is the chance that it may work fine and even better than the latest stable
 
 Consider this a beta, and like all beta builds it will have its bugs.
 
+It is very possible for this to be completely broken
+
 ### Move My Server
 
 Move My Server is a small script that is designed to allow users to easily move a server from one hypervisor to another. This script aims to handle everything but the destination by itself.

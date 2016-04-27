@@ -7,6 +7,7 @@ import platform
 
 # Static Variables
 distro = platform.linux_distribution()[0]
+os = platform.system()
 user = os.getuid()
 ssh_port = 22
 exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fstab", "/etc/mtab", "/etc/resolv.conf", "/etc/conf.d/net", "/etc/network/interfaces", "/etc/networks", "/etc/sysconfig/network*", "/etc/sysconfig/hwconf", "/etc/sysconfig/ip6tables-config", "/etc/sysconfig/kernel", "/etc/hostname", "/etc/HOSTNAME", "/etc/hosts", "/etc/modprobe*", "/etc/modules", "/net", "/lib/modules", "/etc/rc.conf" ]
@@ -19,9 +20,15 @@ if user != 0:
     exit()
 print ""
 print "we detect you are running %s" % distro
+
+# Checking for Windows or OS X
+if os == 'Darwin' or 'Windows':
+    print "You will need to install and add Rsync to your path by yourself for this script to run"
+    print "If you have not installed Rsync and added it to your path then this will fail. If you are on OS X, Ports or Homebrew should be able to help you with this."
+
 #Checking dependancies
-print "Checking for missing dependancies"
 print ""
+print "Checking for missing dependancies"
 if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
     print "rsync is installed, moving on"
 else:
