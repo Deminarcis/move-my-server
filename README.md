@@ -1,4 +1,3 @@
-
 ### Move My Server
 
 Move My Server is a small script that allows users to easily move a server from one hypervisor to another.
@@ -18,6 +17,7 @@ If you dont have these installed then the script will get them from your package
 
 - Debian 8 (Jessie)
 - CentOS 7 (1511 build)
+- OpenSUSE Tumbleweed
 
 #### Installation
 unzip and run.
