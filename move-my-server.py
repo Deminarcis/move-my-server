@@ -4,6 +4,13 @@
 import os
 import sys
 import platform
+import argparse
+
+# Arguments/Switches
+
+parser = argparse.ArgumentParser(description='Options for this script.')
+
+
 
 # Static Variables
 distro = platform.linux_distribution()[0]
@@ -12,8 +19,7 @@ user = os.getuid()
 ssh_port = 22
 exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fstab", "/etc/mtab", "/etc/resolv.conf", "/etc/conf.d/net", "/etc/network/interfaces", "/etc/networks", "/etc/sysconfig/network*", "/etc/sysconfig/hwconf", "/etc/sysconfig/ip6tables-config", "/etc/sysconfig/kernel", "/etc/hostname", "/etc/HOSTNAME", "/etc/hosts", "/etc/modprobe*", "/etc/modules", "/net", "/lib/modules", "/etc/rc.conf" ]
 
-
-#check_root
+#check for root
 print "you are logged in as %s" % user
 if user != 0:
     raise EnvironmentError, "You are not logged in as root. This script contains commands that must be run as root, please restart using sudo or run this script as root"
@@ -42,7 +48,7 @@ else:
     if distro == "Ubuntu"
         os.system('apt install -y rsync')
 
-#Create exceptionf file
+#Create exception file
 print "Creating exceptions file(s)"
 open("./exclusion", "w")
 with open("./exclusion", "w") as exclusion:
