@@ -8,28 +8,29 @@ import platform
 distro = platform.linux_distribution()[0]
 os = platform.system()
 import os
+user = os.getlogin()
+uid = os.getuid()
 exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fstab", "/etc/mtab", "/etc/resolv.conf", "/etc/conf.d/net", "/etc/network/interfaces", "/etc/networks", "/etc/sysconfig/network*", "/etc/sysconfig/hwconf", "/etc/sysconfig/ip6tables-config", "/etc/sysconfig/kernel", "/etc/hostname", "/etc/HOSTNAME", "/etc/hosts", "/etc/modprobe*", "/etc/modules", "/net", "/lib/modules", "/etc/rc.conf" ]
+
 
 
 #check_root
 print ("you are logged in as %s" % user)
 if os.getuid() != 0:
-    raise EnvironmentError, "You are not logged in as root. This script contains commands that must be run as root, please restart using sudo or run this script as root"
-    exit()
-print ""
+    exit("You are not logged in as root. This script contains commands that must be run as root, please restart using sudo or run this script as root")
 print ("we detect you are running %s" % distro)
 # Checking for Windows or OS X
 if os == 'Darwin' or 'Windows':
-    print "You will need to install and add Rsync to your path by yourself for this script to run"
-    print "If you have not installed Rsync and added it to your path then this will fail. If you are on OS X, Ports or Homebrew should be able to help you with this."
+    print ("You will need to install and add Rsync to your path by yourself for this script to run")
+    print ("If you have not installed Rsync and added it to your path then this will fail. If you are on OS X, Ports or Homebrew should be able to help you with this.")
 
 #Checking dependancies
-print ""
-print "Checking for missing dependancies"
+print ("")
+print ("Checking for missing dependancies")
 if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
-    print "rsync is installed, moving on"
+    print ("rsync is installed, moving on")
 else:
-    print "We will need to install rsync to continue"
+    print ("We will need to install rsync to continue")
     if distro == "CentOS Linux":
         os.system('yum install -y rsync')
     if distro == "debian":
@@ -42,7 +43,7 @@ else:
         os.system('dnf install -y rsync')
 
 #Create exceptionf file
-print "Creating exceptions file(s)"
+print ("Creating exceptions file(s)")
 open("./exclusion", "w")
 with open("./exclusion", "w") as exclusion:
     for item in exceptions:
@@ -51,8 +52,8 @@ exclusion.close()
 exclusion = str("./exclusion")
 
 #Set up SSH destination
-print "Next we will set the destination, please enter the details when prompted when."
-print ""
+print ("Next we will set the destination, please enter the details.")
+print ("")
 login_user = input("Enter the user you are logging in as: ")
 server = input("Please enter the server you would like to back up to: ")
 destination_folder = input("Enter the directory on target server: ")
@@ -63,6 +64,6 @@ else:
     ssh = 22
 if len(ssh_port) < 1:
     ssh = 22
-print ""
-print "Performing transfer over ssh"
+print ("")
+print ("Performing transfer over ssh")
 os.system('rsync -e "ssh -p %s" -azPxvh --progress --delete-after --ignore-errors --exclude-from=%s / %s@%s:%s' % (ssh, exclusion, login_user, server, destination_folder))
