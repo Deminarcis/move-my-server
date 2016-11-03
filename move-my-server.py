@@ -55,14 +55,20 @@ exclusion = str("./exclusion")
 print ("Next we will set the destination, please enter the details.")
 print ("")
 login_user = input("Enter the user you are logging in as: ")
+if len(login_user) < 1:
+    exit("You need to specify a user")
 server = input("Please enter the server you would like to back up to: ")
-destination_folder = input("Enter the directory on target server: ")
+if len(server) < 1:
+    exit("You need to specify a remote server or localhost")
+destination_folder = input("Enter the directory on target server: (default is the remote home directory) ")
+if len(destination_folder) < 1:
+    destination = os.path.expanduser('~')
 ssh = input("Do you need to set a custom ssh port? ")
-if ssh == 'Yes' or 'yes' or 'y':
+if ssh == "Yes" or "yes" or "y":
     ssh = input("Enter your ssh port: ")
 else:
     ssh = 22
-if len(ssh_port) < 1:
+if len(ssh) < 1:
     ssh = 22
 print ("")
 print ("Performing transfer over ssh")
