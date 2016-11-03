@@ -15,7 +15,7 @@ exceptions = [ "/boot", "/proc", "/sys", "/tmp", "/dev", "/var/lock", "/etc/fsta
 
 
 #check_root
-print ("you are logged in as %s" % user)
+print ("You are logged in as %s" % user)
 if os.getuid() != 0:
     exit("You are not logged in as root. This script contains commands that must be run as root, please restart using sudo or run this script as root")
 print ("we detect you are running %s" % distro)
@@ -26,7 +26,7 @@ if os == 'Darwin' or 'Windows':
 
 #Checking dependancies
 print ("")
-print ("Checking for missing dependancies")
+print ("Checking for missing dependencies")
 if os.access("/usr/bin/rsync", os.R_OK) or os.access("/bin/rsync", os.R_OK):
     print ("rsync is installed, moving on")
 else:
