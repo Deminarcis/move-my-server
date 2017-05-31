@@ -22,7 +22,7 @@ print ("we detect you are running %s" % distro)
 # Checking for Windows or OS X
 if os == 'Darwin' or 'Windows':
     print ("You will need to install and add Rsync to your path by yourself for this script to run")
-    print ("If you have not installed Rsync and added it to your path then this will fail. If you are on OS X, Ports or Homebrew should be able to help you with this.")
+    print ("If you have not installed Rsync and added it to your path then this will fail. If you are on OS X, Ports or Homebrew should be able to help you with this. Or you can manually install if you. like")
 
 #Checking dependancies
 print ("")

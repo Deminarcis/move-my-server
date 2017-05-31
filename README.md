@@ -1,6 +1,6 @@
 ### Move My Server
 
-Move My Server is a small script that allows users to easily move a server from one hypervisor to another hypervisor or backup server.
+Move My Server is a small script that allows users to easily move a server from one hypervisor to a backup server. It can probably do other stuff, but this is what i made it for.
 
 I hope you find it useful!
 
@@ -8,10 +8,10 @@ I hope you find it useful!
 
 You will only need Python to begin with but in the spirit of transparency this script will make sure the following are installed:
 
-- Python (2.7 should work)
+- Python (2.7 should work, but it is set up to use python3)
 - rsync
 
-If you dont have these installed then the script will get them from your package manager.
+If you dont have rsync installed then the script will get it from your package manager.
 
 #### Supported / Tested on:
 
@@ -32,4 +32,4 @@ All bugs can be submitted over at [The Github Issues page for this project](http
 #### TODO
 
 - Create a better default exclusions list
-- make some switches fo quick args
+- make some switches for quick arguments / scripting
